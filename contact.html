@@ -34,47 +34,7 @@
 <body>
 
 	<header id="header" id="home">
-		<div class="container header-top">
-			<div class="row">
-				<div class="col-6 top-head-left">
-					<ul>
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-6 top-head-right">
-					<ul>
-						<li><a href="tel:+31242340700"><span>024 2340 700</span> <span class="lnr lnr-phone-handset"></span></a></li>
-						<li><a href="#">Register / Login</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<hr>
-		<div class="container">
-			<div class="row align-items-center justify-content-between d-flex">
-				<div id="logo">
-					<a href="index.html"><img src="img/logo2.png" alt="" title="" /></a>
-				</div>
-				<nav id="nav-menu-container">
-					<ul class="nav-menu">
-						<li class="menu-active"><a href="index.html">Home</a></li>
-						<!-- <li><a href="service.html">Producten</a></li> -->
-						<!-- <li><a href="team.html">Team</a></li> -->
-						<li><a href="price.html">Product en Prijs</a></li>
-						<!-- <li><a href="blog-home.html">Landen</a></li> -->
-						<li><a href="about.html">Over ons</a></li>
-						<li><a href="contact.html">Contact</a></li>
-						<!-- <li class="menu-has-children"><a href="">Pages</a> -->
-						<!-- <ul>
-								<li><a href="blog-single.html">blog Single</a></li>
-								<li><a href="elements.html">Elements</a></li>
-							  </ul> -->
-						</li>
-					</ul>
-				</nav><!-- #nav-menu-container -->
-			</div>
+		
 	</header><!-- #header -->
 
 	<!-- start banner Area -->
@@ -145,7 +105,6 @@
 								<textarea class="common-textarea form-control" name="message" placeholder="Bericht" onfocus="this.placeholder = ''"
 								 onblur="this.placeholder = 'Messege'" required=""></textarea>
 								<button class="primary-btn mt-20 text-white" style="float: right;">Send Message</button>
-
 							</div>
 						</div>
 					</form>
@@ -157,55 +116,8 @@
 
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-5 col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<h6>Over ons</h6>
-						<p>
-							SalusCheck BV helpt ondernemers met wet- en regelgeving bij handel met het buitenland en gesanctioneerde landen,
-							bedrijven en personen. SalusCheck BV is pas tevreden als u met een gerust hart zaken doet met buitenlandse
-							partijen.
-						</p>
-						<p class="footer-text">
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
-							 class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-5  col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<h6>Nieuwsbrief</h6>
-						<p>Blijf op de hoogte met onze nieuwsbrief</p>
-						<div class="" id="mc_embed_signup">
-							<form target="_blank" novalidate="true" action="#" method="get" class="form-inline">
-								<input class="form-control" name="EMAIL" placeholder="Plaats Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Plaats Email '"
-								 required="" type="email">
-								<button class="click-btn btn btn-default"><span class="lnr lnr-arrow-right"></span></button>
-								<div style="position: absolute; left: -5000px;">
-									<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-								</div>
+		<div id="footer">
 
-								<div class="info"></div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
-					<div class="single-footer-widget">
-						<h6>Volg ons</h6>
-						<p>Lekker sociaal</p>
-						<div class="footer-social d-flex align-items-center">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-linkedin"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</footer>
 	<!-- End footer Area -->
@@ -227,6 +139,13 @@
 	<script src="js/parallax.min.js"></script>
 	<script src="js/mail-script.js"></script>
 	<script src="js/main.js"></script>
+	<script>
+		$(function () {
+			$("#header").load("header.html");
+			$("#footer").load("footer.html");
+		});
+	</script>
+
 </body>
 
 </html>
