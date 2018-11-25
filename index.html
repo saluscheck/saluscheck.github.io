@@ -34,11 +34,11 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129737799-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	window.dataLayer = window.dataLayer || [];
+	function gtag() { dataLayer.push(arguments); }
+	gtag('js', new Date());
 
-  gtag('config', 'UA-129737799-1');
+	gtag('config', 'UA-129737799-1');
 </script>
 
 <body>
@@ -174,7 +174,7 @@
 						</p>
 					</div>
 				</div> -->
-				<!-- <div class="col-lg-4 col-md-6">
+	<!-- <div class="col-lg-4 col-md-6">
 							<div class="single-feature">
 								<h4><span class="lnr lnr-rocket"></span>Technical Skills</h4>
 								<p>
@@ -198,7 +198,7 @@
 								</p>
 							</div>
 						</div>-->
-			<!-- </div>
+	<!-- </div>
 		</div>
 	</section> -->
 	<!-- End feature Area -->
@@ -429,9 +429,9 @@
 
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">
-			<div id="footer">
+		<div id="footer">
 
-			</div>
+		</div>
 	</footer>
 	<!-- End footer Area -->
 
@@ -455,9 +455,14 @@
 	<script src="js/main.js"></script>
 	<script>
 		$(function () {
-			$("#header").load("header.html");
-			$("#footer").load("footer.html");
+			$("#header").load("./header.html", (responseTxt, statusTxt, xhr) => {
+				if (statusTxt == "success")
+					updateNavigation();
+				if (statusTxt == "error")
+					console.log("Error: " + xhr.status + ": " + xhr.statusText);
+			});
 		});
+		$("#footer").load("footer.html");
 	</script>
 
 </body>
