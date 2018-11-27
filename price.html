@@ -226,9 +226,14 @@
 	<script src="js/main.js"></script>
 	<script>
 		$(function () {
-			$("#header").load("header.html");
-			$("#footer").load("footer.html");
+			$("#header").load("./header.html", (responseTxt, statusTxt, xhr) => {
+				if (statusTxt == "success")
+					updateNavigation();
+				if (statusTxt == "error")
+					console.log("Error: " + xhr.status + ": " + xhr.statusText);
+			});
 		});
+		$("#footer").load("footer.html");
 	</script>
 </body>
 
