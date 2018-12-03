@@ -1,18 +1,72 @@
+<script>
+    function validateEmail(email) {
+        var re = new RegExp("^.*@.+\..*");
+        return re.test(String(email).toLowerCase());
+    }
+    function subscribeNewsLetter() {
+        var _data = {
+            emailAddress: $("#subscribeNewsLetterEmail").val()
+        }
+        if (validateEmail(_data.emailAddress)) {
+            $(".insertEmail").text(_data.emailAddress);
+            $.ajax({
+                method: "post",
+                url: "https://us-central1-salustest-7df6a.cloudfunctions.net/registerNewsLetter",
+                data: JSON.stringify(_data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: (result) => {
+                    console.log("Succes:", result)
+                    if (result.status === "Sent") {
+                        $(".sbscWait").addClass("hiddenElement");
+                        $(".sbscSuccess").removeClass("hiddenElement");
+
+                    }
+                    if (result.status === "Existed") {
+                        $(".sbscWait").addClass("hiddenElement");
+                        $(".sbscExists").removeClass("hiddenElement");
+                    }
+                    return
+                },
+                error: (error) => {
+                    $(".sbscWait").addClass("hiddenElement");
+                    $(".sbscError").removeClass("hiddenElement");
+                    console.error("Error Sending Mail:", error)
+                }
+            })
+
+            $("#subscribePopUp").removeClass("hiddenElement");
+            $(".sbscWait").removeClass("hiddenElement");
+
+        }
+    }
+
+    function closeSubScribePopUp() {
+        $("#subscribePopUp").addClass("hiddenElement");
+        $(".sbscSuccess").addClass("hiddenElement");
+        $(".sbscExists").addClass("hiddenElement");
+        $(".sbscError").addClass("hiddenElement");
+        $(".sbscWait").addClass("hiddenElement");
+    }
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-5 col-md-4 col-sm-4">
             <div class="single-footer-widget">
                 <h6>Over ons</h6>
                 <p>
-                    SalusCheck BV helpt ondernemers met wet- en regelgeving bij handel met het buitenland en gesanctioneerde landen,
-                    bedrijven en personen. SalusCheck BV is pas tevreden als u met een gerust hart zaken doet met buitenlandse
+                    SalusCheck BV helpt ondernemers met wet- en regelgeving bij handel met het buitenland en
+                    gesanctioneerde landen,
+                    bedrijven en personen. SalusCheck BV is pas tevreden als u met een gerust hart zaken doet met
+                    buitenlandse
                     partijen.
                 </p>
                 <p class="footer-text">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;
-                    2018 All rights reserved | This template is made with <i
-                     class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    2018 All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
                 <a href="/docs/AlgemeneVoorwaarden.pdf" target="_blank">Algemene voorwaarden</a>
@@ -23,17 +77,48 @@
                 <h6>Nieuwsbrief</h6>
                 <p>Blijf op de hoogte met onze nieuwsbrief</p>
                 <div class="" id="mc_embed_signup">
-                    <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                     method="get" class="form-inline">
-                        <input class="form-control" name="EMAIL" placeholder="Plaats Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Plaats Email '"
-                         required="" type="email">
-                        <button class="click-btn btn btn-default"><span class="lnr lnr-arrow-right"></span></button>
-                        <div style="position: absolute; left: -5000px;">
-                            <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                    <input id="subscribeNewsLetterEmail" class="form-control" name="EMAIL" placeholder="Plaats Email"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type hier uw emailadres'" required=""
+                        type="email">
+                    <div class="actionInfoButton">
+                        <button class="click-btn btn btn-default" onclick="subscribeNewsLetter()">
+                            <span id="subscribeButton" class="lnr lnr-arrow-right"></span>
+                        </button>
+                        <div id="subscribePopUp" class="actionInfoButtonText popUp hiddenElement">
+                            <div class="subscribeState">
+                                <img id="subscribeSpinner" class="sbscWait popUpSpinner hiddenElement" src="./img/yellowSpinner1.gif">
+                                <span id="subscribeCheckMark" class="sbscSuccess popUpIcon lnr lnr-checkmark-circle hiddenElement"></span>
+                                <span id="subscribeWarning" class="sbscExists popUpIcon lnr lnr-warning hiddenElement"></span>
+                                <span id="subscribeError" class="sbscError popUpIcon lnr lnr-cross-circle hiddenElement"></span>
+                            </div>
+                            <div class="subscribeMessage">
+                                <div class="sbscWait hiddenElement">Aanmelding gestart...</div>
+                                <div id="subscribeSuccessText" class="sbscSuccess hiddenElement">
+                                    <p>Dank u wel voor uw aanmelding. Er is een email verstuurd naar <span class="insertEmail"></span></p>
+                                    <p>Om uw aanmelding te bevestigen gaat u naar uw mail en klikt op de
+                                        bevestigingslink.</p>
+                                    <p>De bevestigingslink is 24 uur geldig.</p>
+                                </div>
+                                <div id="subscribeExistsText" class="sbscExists hiddenElement">
+                                    <p>Het emailadres <span class="insertEmail"></span> is al aangemeld voor de nieuwsbrief.</p>
+                                    <p>Als u de nieuwsbrief niet ontvangt, controleer dan of de nieuwsbrieven in de
+                                        spam folder van uw mailbox staan.</p>
+                                </div>
+                                <div id="subscribeErrorText" class="sbscError hiddenElement">
+                                    <p>Er is iets fout gegaan bij het registreren voor de nieuwsbrief.</p>
+                                    <p>Probeert u het later opnieuw</p>
+                                </div>
+                            </div>
+                            <div class="subscribeButtonBar">
+                                <div>
+                                    <button id="closeSubscribeWindowButton" class="primary-btn text-white" onclick="closeSubScribePopUp()">Ok</button>
+                                </div>
+
+                            </div>
                         </div>
 
-                        <div class="info"></div>
-                    </form>
+                    </div>
+                    <div class="info"></div>
                 </div>
             </div>
         </div>

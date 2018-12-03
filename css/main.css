@@ -2330,7 +2330,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-content {
-  top:20px;
+  top: 20px;
   text-align: left;
 }
 
@@ -3435,6 +3435,85 @@ body.mobile-nav-active #mobile-nav-toggle {
 .commentform-area .form-control {
   border: none;
   background: #f9f9ff;
+}
+
+/* SALUS */
+
+.popUp {
+  position: fixed;
+  bottom: calc(50% - 150px);
+  left: calc(50% - 200px);
+  height: 300px;
+  width: 400px;
+  z-index: 100;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+}
+
+@media (max-width: 410px) {
+  .popUp {
+    width:100%;
+    left:0;
+  }
+}
+
+.actionInfoButton {
+  display: flex;
+  flex-direction: row;
+}
+
+.actionInfoButtonText {
+  padding-left: 10px;
+  padding-top: 7px;
+}
+
+.hiddenElement {
+  display: none;
+}
+
+.popUpIcon{
+  font-size: 36px;
+  font-weight: bold;
+  color: #fab700
+}
+
+.popUpSpinner{
+  position:relative;
+  height:40px;
+  width:40px;
+  top:-11px;
+  left:-2px;
+}
+
+.subscribeState{
+  padding-top:25px;
+  padding-bottom: 15px;
+  width:100%;
+  text-align: center;
+}
+.subscribeButtonBar{
+  width:100%;
+  text-align: center;
+}
+.subscribeMessage{
+  padding-left:15px;
+  padding-right:15px;
+  min-height:135px;
+}
+
+#subscribeCheckMark{
+  color:green;
+}
+
+#subscribeError{
+  color: red;
+}
+
+#closeSubscribeWindowButton:hover {
+  border-color: #fab700 !important;
+  color:#fab700 !important;
 }
 
 /*
