@@ -76,7 +76,7 @@
             <div class="single-footer-widget">
                 <h6>Nieuwsbrief</h6>
                 <p>Blijf op de hoogte met onze nieuwsbrief</p>
-                <div class="" id="mc_embed_signup">
+                <div class="subscribeArea">
                     <input id="subscribeNewsLetterEmail" class="form-control" name="EMAIL" placeholder="Plaats Email"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type hier uw emailadres'" required=""
                         type="email">
@@ -84,42 +84,44 @@
                         <button class="click-btn btn btn-default" onclick="subscribeNewsLetter()">
                             <span id="subscribeButton" class="lnr lnr-arrow-right"></span>
                         </button>
-                        <div id="subscribePopUp" class="actionInfoButtonText popUp hiddenElement">
-                            <div class="subscribeState">
-                                <img id="subscribeSpinner" class="sbscWait popUpSpinner hiddenElement" src="./img/yellowSpinner1.gif">
-                                <span id="subscribeCheckMark" class="sbscSuccess popUpIcon lnr lnr-checkmark-circle hiddenElement"></span>
-                                <span id="subscribeWarning" class="sbscExists popUpIcon lnr lnr-warning hiddenElement"></span>
-                                <span id="subscribeError" class="sbscError popUpIcon lnr lnr-cross-circle hiddenElement"></span>
-                            </div>
-                            <div class="subscribeMessage">
-                                <div class="sbscWait hiddenElement">Aanmelding gestart...</div>
-                                <div id="subscribeSuccessText" class="sbscSuccess hiddenElement">
-                                    <p>Dank u wel voor uw aanmelding. Er is een email verstuurd naar <span class="insertEmail"></span></p>
-                                    <p>Om uw aanmelding te bevestigen gaat u naar uw mail en klikt op de
-                                        bevestigingslink.</p>
-                                    <p>De bevestigingslink is 24 uur geldig.</p>
-                                </div>
-                                <div id="subscribeExistsText" class="sbscExists hiddenElement">
-                                    <p>Het emailadres <span class="insertEmail"></span> is al aangemeld voor de nieuwsbrief.</p>
-                                    <p>Als u de nieuwsbrief niet ontvangt, controleer dan of de nieuwsbrieven in de
-                                        spam folder van uw mailbox staan.</p>
-                                </div>
-                                <div id="subscribeErrorText" class="sbscError hiddenElement">
-                                    <p>Er is iets fout gegaan bij het registreren voor de nieuwsbrief.</p>
-                                    <p>Probeert u het later opnieuw</p>
-                                </div>
-                            </div>
-                            <div class="subscribeButtonBar">
-                                <div>
-                                    <button id="closeSubscribeWindowButton" class="primary-btn text-white" onclick="closeSubScribePopUp()">Ok</button>
-                                </div>
-
-                            </div>
-                        </div>
-
                     </div>
                     <div class="info"></div>
                 </div>
+                <div id="subscribePopUp" class="actionInfoButtonText popUp hiddenElement">
+                        <div class="subscribeState">
+                            <!-- Status: Always Only one of these 4 are shown -->
+                            <img id="subscribeSpinner" class="sbscWait popUpSpinner hiddenElement" src="./img/yellowSpinner1.gif">
+                            <span id="subscribeCheckMark" class="sbscSuccess popUpIcon lnr lnr-checkmark-circle hiddenElement"></span>
+                            <span id="subscribeWarning" class="sbscExists popUpIcon lnr lnr-warning hiddenElement"></span>
+                            <span id="subscribeError" class="sbscError popUpIcon lnr lnr-cross-circle hiddenElement"></span>
+                            <!-- EndStatus -->
+                        </div>
+                        <div class="subscribeMessage">
+                            <!-- Message: Always Only one of these divs is shown -->
+                            <div class="sbscWait hiddenElement">Aanmelding gestart...</div>
+                            <div id="subscribeSuccessText" class="sbscSuccess hiddenElement">
+                                <p>Dank u wel voor uw aanmelding. Er is een email verstuurd naar <span class="insertEmail"></span></p>
+                                <p>Om uw aanmelding te bevestigen gaat u naar uw mail en klikt op de
+                                    bevestigingslink.</p>
+                                <p>De bevestigingslink is 24 uur geldig.</p>
+                            </div>
+                            <div id="subscribeExistsText" class="sbscExists hiddenElement">
+                                <p>Het emailadres <span class="insertEmail"></span> is al aangemeld voor de nieuwsbrief.</p>
+                                <p>Als u de nieuwsbrief niet ontvangt, controleer dan of de nieuwsbrieven in de
+                                    spam folder van uw mailbox staan.</p>
+                            </div>
+                            <div id="subscribeErrorText" class="sbscError hiddenElement">
+                                <p>Er is iets fout gegaan bij het registreren voor de nieuwsbrief.</p>
+                                <p>Probeert u het later opnieuw</p>
+                            </div>
+                            <!-- /Message -->
+                        </div>
+                        <div class="subscribeButtonBar">
+                            <div>
+                                <button id="closeSubscribeWindowButton" class="primary-btn text-white" onclick="closeSubScribePopUp()">Ok</button>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-4 social-widget">

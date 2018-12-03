@@ -3487,6 +3487,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   left:-2px;
 }
 
+.subscribeArea{
+  display:flex;
+  flex-direction: row;
+}
+
 .subscribeState{
   padding-top:25px;
   padding-bottom: 15px;
