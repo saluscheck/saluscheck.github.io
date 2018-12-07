@@ -1,3 +1,36 @@
+<script>
+    $("form").submit(function (event) {
+        _data = $(this).serializeArray();
+        $.ajax({
+            method: "post",
+            url: "https://us-central1-salustest-7df6a.cloudfunctions.net/submitContactForm",
+            data: JSON.stringify(_data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: (result) => {
+                $(".cfWait").addClass("hiddenElement")
+                $(".cfSuccess").removeClass("hiddenElement")
+                console.log(result)
+            },
+            error: (error) => {
+                $(".cfWait").addClass("hiddenElement")
+                $(".cfError").removeClass("hiddenElement")
+                console.log(error)
+            }
+        })
+        event.preventDefault();
+        $("#contactFormPopUp").removeClass("hiddenElement")
+        $(".cfWait").removeClass("hiddenElement")
+    });
+
+    function closeContactFormPopUp(){
+        $("#contactFormPopUp").addClass("hiddenElement")
+
+    }
+
+
+</script>
+
 <div class="col-lg-4 d-flex flex-column address-wrap">
     <div class="single-contact-address d-flex flex-row">
         <div class="icon">
@@ -28,7 +61,7 @@
     </div>
 </div>
 <div class="col-lg-8">
-    <form class="form-area " id="contactForm" action="" onsubmit="submitContactForm()" method="" class="contact-form text-right">
+    <form class="form-area contact-form text-right" id="contactForm" action="#" method="">
         <div class="row">
             <div class="col-lg-6 form-group">
                 <input name="name" placeholder="Naam" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Naam'"
@@ -43,8 +76,34 @@
             <div class="col-lg-6 form-group">
                 <textarea class="common-textarea form-control" name="message" placeholder="Bericht" onfocus="this.placeholder = ''"
                     onblur="this.placeholder = 'Bericht'" required=""></textarea>
-                <button class="primary-btn mt-20 text-white" title="Vul alle velden van het formulier in" style="float: right;">Verstuur bericht</button>
+                <button class="primary-btn mt-20 text-white" title="Vul alle velden van het formulier in" style="float: right;">Verstuur
+                    bericht</button>
             </div>
         </div>
     </form>
+    <div id="contactFormPopUp" class="actionInfoButtonText popUp hiddenElement">
+        <div class="subscribeState">
+            <!-- Status: Always Only one of these 4 are shown -->
+            <img id="contactFormSpinner" class="cfWait popUpSpinner hiddenElement" src="./img/yellowSpinner1.gif">
+            <span id="contactFormCheckMark" class="cfSuccess popUpIcon lnr lnr-checkmark-circle hiddenElement"></span>
+            <span id="contactFormError" class="cfError popUpIcon lnr lnr-cross-circle hiddenElement"></span>
+            <!-- EndStatus -->
+        </div>
+        <div class="popUpMessage">
+            <!-- Message: Always Only one of these divs is shown -->
+            <div class="cfWait hiddenElement">Uw vraag wordt verzonden...</div>
+            <div id="sendSuccessful" class="cfSuccess hiddenElement">
+                <p>Dank u wel voor uw vraag of opmerking. We komen hier zo spoedig mogelijk op terug.</p>
+            </div>
+            <div id="sendFailed" class="cfError hiddenElement">
+                <p>Er is iets fout gegaan bij het verzenden van het formulier. Probeert u het later opnieuw</p>
+            </div>
+            <!-- /Message -->
+        </div>
+        <div class="subscribeButtonBar">
+            <div>
+                <button id="closeContactFormWindowButton" class="primary-btn text-white popUpWindowButton" onclick="closeContactFormPopUp()">Ok</button>
+            </div>
+        </div>
+    </div>
 </div>

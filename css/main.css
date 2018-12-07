@@ -3506,7 +3506,7 @@ H6{
   width:100%;
   text-align: center;
 }
-.subscribeMessage{
+.popUpMessage{
   padding-left:15px;
   padding-right:15px;
   min-height:135px;
@@ -3520,7 +3520,7 @@ H6{
   color: red;
 }
 
-#closeSubscribeWindowButton:hover {
+.popUpWindowButton:hover {
   border-color: #fab700 !important;
   color:#fab700 !important;
 }

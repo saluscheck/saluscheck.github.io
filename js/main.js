@@ -126,13 +126,10 @@ function updateNavigation() {
   });
 
   // Mobile Navigation
-  console.log("Trying to do some Navigation Stuff")
   if ($('#nav-menu-container').length) {
-    console.log("It looks like we're realy gooing to do some navingation stuff")
     var $mobile_nav = $('#nav-menu-container').clone().prop({
       id: 'mobile-nav'
     });
-    console.log("I did do some navigation stuff, the result is: ", $mobile_nav)
     $mobile_nav.find('> ul').attr({
       'class': '',
       'id': ''
