@@ -202,3 +202,8 @@ function updateNavigation() {
     }
   });
 }
+
+function submitContactForm(){
+  $contactForm=$("#contactForm")
+  console.log ($contactForm)
+}

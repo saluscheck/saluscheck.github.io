@@ -3439,6 +3439,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* SALUS */
 
+H6{
+  padding-bottom:20px;
+}
+
 .popUp {
   position: fixed;
   bottom: calc(50% - 150px);
