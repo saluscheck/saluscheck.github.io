@@ -250,6 +250,16 @@
 	</section>
 	<!-- End team Area -->
 
+	<!-- Start contact-page Area -->
+	<section class="contact-page-area section-gap">
+			<div class="container">
+				<div id="contactForm" class="row">
+					<!-- Content for this contactform will be dynamically loaded from contactform.html -->
+				</div>
+			</div>
+		</section>
+		<!-- End contact-page Area -->
+
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">
 		<div id="footer">
@@ -285,6 +295,7 @@
 					console.log("Error: " + xhr.status + ": " + xhr.statusText);
 			});
 		});
+		$("#contactForm").load("contactform.html");
 		$("#footer").load("footer.html");
 	</script>
 </body>
