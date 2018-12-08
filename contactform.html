@@ -33,7 +33,7 @@
 
 </script>
 
-<div class="col-lg-4 d-flex flex-column address-wrap">
+<!-- <div class="col-lg-4 d-flex flex-column address-wrap">
     <div class="single-contact-address d-flex flex-row">
         <div class="icon">
             <span class="lnr lnr-home"></span>
@@ -61,21 +61,23 @@
             <p>We zien uw mail graag tegemoet</p>
         </div>
     </div>
-</div>
-<div class="col-lg-8">
+</div> -->
+<div class="col-lg-12">
     <form class="form-area contact-form text-right" id="contactForm" action="#" method="">
         <div class="row">
-            <div class="col-lg-6 form-group">
-                <input name="name" placeholder="Naam" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Naam'"
+            <div class="col-lg-12 form-group">
+                <input name="name" placeholder="Bedrijfsnaam" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Naam'"
+                    class="common-input mb-20 form-control" required="" type="text">
+                <input name="name" placeholder="Voor en Achternaam" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Naam'"
                     class="common-input mb-20 form-control" required="" type="text">
                 <input name="email" placeholder="E-mail" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" class="common-input mb-20 form-control"
                     required="" type="email">
-                <input name="subject" placeholder="Onderwerp" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Onderwerp'"
+                <input name="subject" placeholder="Telefoonnummer" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefoonnummer'"
                     class="common-input mb-20 form-control" required="" type="text">
                 <div class="mt-20 alert-msg" style="text-align: left;"></div>
             </div>
-            <div class="col-lg-6 form-group">
+            <div class="col-lg-12 form-group">
                 <textarea class="common-textarea form-control" name="message" placeholder="Bericht" onfocus="this.placeholder = ''"
                     onblur="this.placeholder = 'Bericht'" required=""></textarea>
                 <button class="primary-btn mt-20 text-white" title="Vul alle velden van het formulier in" style="float: right;">Verstuur
