@@ -1,0 +1,122 @@
+<script>
+    $("form").submit(function (event) {
+        _data = $(this).serializeArray();
+        $.ajax({
+            method: "post",
+            url: "https://us-central1-salustest-7df6a.cloudfunctions.net/submitContactForm",
+            data: JSON.stringify(_data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: (result) => {
+                $(".cfWait").addClass("hiddenElement")
+                $(".cfSuccess").removeClass("hiddenElement")
+                console.log(result)
+            },
+            error: (error) => {
+                $(".cfWait").addClass("hiddenElement")
+                $(".cfError").removeClass("hiddenElement")
+                console.log(error)
+            }
+        })
+        event.preventDefault();
+        $("#contactFormPopUp").removeClass("hiddenElement")
+        $(".cfWait").removeClass("hiddenElement")
+    });
+
+    function closeContactFormPopUp(){
+        $("#contactFormPopUp").addClass("hiddenElement")
+        $(".cfSuccess").addClass("hiddenElement")
+        $(".cfError").addClass("hiddenElement")
+        $(".cfWait").addClass("hiddenElement")
+    }
+
+
+</script>
+
+<!-- <div class="col-lg-4 d-flex flex-column address-wrap">
+    <div class="single-contact-address d-flex flex-row">
+        <div class="icon">
+            <span class="lnr lnr-home"></span>
+        </div>
+        <div class="contact-details">
+            <h5>Pe Hawinkelsstraat</h5>
+            <p>6543JD Nijmegen</p>
+        </div>
+    </div>
+    <div class="single-contact-address d-flex flex-row">
+        <div class="icon">
+            <span class="lnr lnr-phone-handset"></span>
+        </div>
+        <div class="contact-details">
+            <h5>+31 (0)24 2340 700</h5>
+            <p>Maandag t/m vrijdag van 08:30 tot 17:30</p>
+        </div>
+    </div>
+    <div class="single-contact-address d-flex flex-row">
+        <div class="icon">
+            <span class="lnr lnr-envelope"></span>
+        </div>
+        <div class="contact-details">
+            <h5>info@SalusCheck.nl</h5>
+            <p>We zien uw mail graag tegemoet</p>
+        </div>
+    </div>
+</div> -->
+<div class="col-lg-12">
+        <div class="row d-flex justify-content-center">
+				<div class="menu-content pb-70 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">Vraag een gratis SanctieCheck aan</h1>
+						<p>
+							Maximaal 1 per onderneming
+						</p>
+					</div>
+				</div>
+			</div>
+    <form class="form-area contact-form text-right" id="contactForm" action="#" method="">
+        <div class="row">
+            <div class="col-lg-12 form-group">
+                <input name="name" placeholder="Bedrijfsnaam" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Naam'"
+                    class="common-input mb-20 form-control" required="" type="text">
+                <input name="name" placeholder="Uw Voor en Achternaam" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Naam'"
+                    class="common-input mb-20 form-control" required="" type="text">
+                <input name="email" placeholder="E-mail" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'" class="common-input mb-20 form-control"
+                    required="" type="email">
+                <input name="subject" placeholder="Telefoonnummer" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefoonnummer'"
+                    class="common-input mb-20 form-control" required="" type="text">
+                <div class="mt-20 alert-msg" style="text-align: left;"></div>
+            </div>
+            <div class="col-lg-12 form-group">
+                <textarea class="common-textarea form-control" name="message" placeholder="Vul hier de naam van de persoon of het bedrijf in welke u wilt toetsen op de sanctielijsten" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Bericht'" required=""></textarea>
+                <button class="primary-btn mt-20 text-white" title="Vul alle velden van het formulier in" style="float: right;">Vraag Gratis SanctieCheck aan</button>
+            </div>
+        </div>
+    </form>
+    <div id="contactFormPopUp" class="actionInfoButtonText popUp hiddenElement">
+        <div class="subscribeState">
+            <!-- Status: Always Only one of these 4 are shown -->
+            <img id="contactFormSpinner" class="cfWait popUpSpinner hiddenElement" src="./img/yellowSpinner1.gif">
+            <span id="contactFormCheckMark" class="cfSuccess popUpIcon lnr lnr-checkmark-circle hiddenElement"></span>
+            <span id="contactFormError" class="cfError popUpIcon lnr lnr-cross-circle hiddenElement"></span>
+            <!-- EndStatus -->
+        </div>
+        <div class="popUpMessage">
+            <!-- Message: Always Only one of these divs is shown -->
+            <div class="cfWait hiddenElement">Uw vraag wordt verzonden...</div>
+            <div id="sendSuccessful" class="cfSuccess hiddenElement">
+                <p>Dank u wel voor uw aanvraag. Wij reageren doorgaans binnen 1 werkdag.</p>
+            </div>
+            <div id="sendFailed" class="cfError hiddenElement">
+                <p>Er is iets fout gegaan bij het verzenden van het formulier. Probeert u het later opnieuw</p>
+            </div>
+            <!-- /Message -->
+        </div>
+        <div class="subscribeButtonBar">
+            <div>
+                <button id="closeContactFormWindowButton" class="primary-btn text-white popUpWindowButton" onclick="closeContactFormPopUp()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
