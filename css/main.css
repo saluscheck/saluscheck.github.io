@@ -2256,7 +2256,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   line-height: 42px;
   padding-left: 40px;
   padding-right: 40px;
-  padding-bottom: 15px;
+  margin-bottom: 15px;
   border: none;
   color: #fff;
   display: inline-block;
@@ -2270,6 +2270,28 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
   text-transform: uppercase;
   position: relative;
+}
+
+.reverse-btn {
+  line-height: 42px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 15px;
+  border: none;
+  display: inline-block;
+  font-weight: 500;
+  position: relative;
+  border: 1px solid transparent;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  color: #fab700;
+  background-color: transparent;
+  border-color: #fab700;
 }
 
 .primary-btn-1 {
@@ -2313,6 +2335,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-color: transparent;
   border-color: #fab700;
 }
+
+.reverse-btn:hover {
+  background-color: #fab700;
+  color: white;
+  border-color: #fab700;
+}
+
 
 .primary-btn.white {
   border: 1px solid #fff;
